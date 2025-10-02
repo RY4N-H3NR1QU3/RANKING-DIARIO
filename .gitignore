@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# Outros
+*.db # Para o arquivo do SQLite, se você usar futuramente

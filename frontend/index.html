@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Vendas - Modelo Final</title>
+    <link rel="stylesheet" href="static/css/style.css">
+
+
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>🚀 Ranking Pro</h2>
+                <p>Sistema Avançado</p>
+            </div>
+            <nav class="nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Principal</div>
+                    <div class="nav-item">
+                        <button class="nav-link active" onclick="showView('dashboard')">
+                            <span class="nav-icon">🏠</span>
+                            Dashboard
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-link" onclick="showView('teams')">
+                            <span class="nav-icon">🏆</span>
+                            Equipes Detalhadas
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-link" onclick="showView('consultants')">
+                            <span class="nav-icon">⭐</span>
+                            Top Consultores
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-link" onclick="showView('dimensioning')">
+                            <span class="nav-icon">🔧</span>
+                            Dimensionamento
+                        </button>
+                    </div>
+
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Análises</div>
+                    <div class="nav-item">
+                        <button class="nav-link" onclick="showView('analytics')">
+                            <span class="nav-icon">📊</span>
+                            Analytics
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-link" onclick="showView('reports')">
+                            <span class="nav-icon">📋</span>
+                            Relatórios
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+            </nav>
+        </aside>
+
+        <main class="main">
+            <div class="header">
+                <h1>Sistema de Ranking Interativo</h1>
+                <p>Monitoramento Avançado com Cards Dinâmicos</p>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="view active">
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-icon">📊</div>
+                        <div class="metric-value">90</div>
+                        <div class="metric-label">Pagamentos</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-value">220.237</div>
+                        <div class="metric-label">Valor Total</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-icon">👥</div>
+                        <div class="metric-value">5</div>
+                        <div class="metric-label">Equipes</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-value">68%</div>
+                        <div class="metric-label">Meta Geral</div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-title">
+                        <div class="title-icon"></div>
+                        Performance das Equipes
+                    </div>
+                    <div class="teams-container">
+                        <div class="team-card yellow-border">
+                            <div class="team-header">
+                                <div class="team-info">
+                                    <div class="team-color-dot yellow"></div>
+                                    <div class="team-name">YELLOW</div>
+                                </div>
+                                <div class="team-value">58.964</div>
+                            </div>
+                            <div class="team-progress-section">
+                                <div class="progress-info">
+                                    <span>118% da meta</span>
+                                    <span>+8.964</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-yellow" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="team-stats">
+                                <span>24 pagamentos</span>
+                                <span>Ticket: 2.457</span>
+                            </div>
+                        </div>
+
+                        <div class="team-card pink-border">
+                            <div class="team-header">
+                                <div class="team-info">
+                                    <div class="team-color-dot pink"></div>
+                                    <div class="team-name">PINK</div>
+                                </div>
+                                <div class="team-value">41.171</div>
+                            </div>
+                            <div class="team-progress-section">
+                                <div class="progress-info">
+                                    <span>82% da meta</span>
+                                    <span>-8.829</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-pink" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                            <div class="team-stats">
+                                <span>17 pagamentos</span>
+                                <span>Ticket: 2.422</span>
+                            </div>
+                        </div>
+
+                        <div class="team-card red-border">
+                            <div class="team-header">
+                                <div class="team-info">
+                                    <div class="team-color-dot red"></div>
+                                    <div class="team-name">RED</div>
+                                </div>
+                                <div class="team-value">36.812</div>
+                            </div>
+                            <div class="team-progress-section">
+                                <div class="progress-info">
+                                    <span>74% da meta</span>
+                                    <span>-13.188</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-red" style="width: 74%;"></div>
+                                </div>
+                            </div>
+                            <div class="team-stats">
+                                <span>15 pagamentos</span>
+                                <span>Ticket: 2.454</span>
+                            </div>
+                        </div>
+
+                        <div class="team-card green-border">
+                            <div class="team-header">
+                                <div class="team-info">
+                                    <div class="team-color-dot green"></div>
+                                    <div class="team-name">GREEN</div>
+                                </div>
+                                <div class="team-value">12.562</div>
+                            </div>
+                            <div class="team-progress-section">
+                                <div class="progress-info">
+                                    <span>50% da meta</span>
+                                    <span>-12.438</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-green" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="team-stats">
+                                <span>5 pagamentos</span>
+                                <span>Ticket: 2.512</span>
+                            </div>
+                        </div>
+
+                        <div class="team-card blue-border">
+                            <div class="team-header">
+                                <div class="team-info">
+                                    <div class="team-color-dot blue"></div>
+                                    <div class="team-name">BLUE</div>
+                                </div>
+                                <div class="team-value">11.764</div>
+                            </div>
+                            <div class="team-progress-section">
+                                <div class="progress-info">
+                                    <span>24% da meta</span>
+                                    <span>-38.236</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-blue" style="width: 24%;"></div>
+                                </div>
+                            </div>
+                            <div class="team-stats">
+                                <span>5 pagamentos</span>
+                                <span>Ticket: 2.353</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- PODIUM -->
+
+                 <div class="section-card">
+                    <h2 class="section-title"><span class="title-icon"></span>Top 3 Consultores</h2>
+                    <div class="podium-container">
+                        <div class="podium-item first">
+                            <div class="podium-rank-badge">1</div>
+                            <!-- <div class="">🥇</div> -->
+                            <div class="podium-avatar">
+                                <img src="https://i.pravatar.cc/150?u=paulo" alt="Foto de Paulo Henrique Rodrigues Mendes">
+                            </div>
+                            <div class="podium-info">
+                                <div class="podium-name">PAULO HENRIQUE RODRIGUES MENDES</div>
+                                <div class="podium-value">R$ 24.491</div>
+                                <div class="podium-team-name yellow-team">YELLOW</div>
+                            </div>
+                        </div>
+
+                        <div class="podium-item second">
+                            <div class="podium-rank-badge">2</div>
+                            <!--<div class="">🥈</div> -->
+                            <div class="podium-avatar">
+                                <img src="https://i.pravatar.cc/150?u=sheriston" alt="Foto de Sheriston Gomes de Lima">
+                            </div>
+                            <div class="podium-info">
+                                <div class="podium-name">SHERISTON GOMES DE LIMA</div>
+                                <div class="podium-value">R$ 12.562</div>
+                                <div class="podium-team-name green-team">GREEN</div>
+                            </div>
+                        </div>
+
+                        <div class="podium-item third">
+                            <div class="podium-rank-badge">3</div>
+                            <!-- <div class="">🥉</div> -->
+                            <div class="podium-avatar">
+                                <img src="https://i.pravatar.cc/150?u=flavio" alt="Foto de Flávio Augusto da C. Souza">
+                            </div>
+                            <div class="podium-info">
+                                <div class="podium-name">FLÁVIO AUGUSTO DA C. SOUZA</div>
+                                <div class="podium-value">R$ 11.205</div>
+                                <div class="podium-team-name pink-team">PINK</div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Equipes Detalhadas -->
+            <div id="teams" class="view">
+                <div class="section-card">
+                    <div class="section-title">
+                        <div class="title-icon"></div>
+                        Detalhamento das Equipes
+                    </div>
+                    <div class="teams-detail-layout">
+                        <div class="teams-menu">
+                            <div class="teams-menu-title">Selecionar Equipe</div>
+                            <div class="team-menu-item active" onclick="showTeamDetail('yellow')">
+                                <div class="team-menu-dot yellow"></div>
+                                <div class="team-menu-name">YELLOW</div>
+                            </div>
+                            <div class="team-menu-item" onclick="showTeamDetail('pink')">
+                                <div class="team-menu-dot pink"></div>
+                                <div class="team-menu-name">PINK</div>
+                            </div>
+                            <div class="team-menu-item" onclick="showTeamDetail('red')">
+                                <div class="team-menu-dot red"></div>
+                                <div class="team-menu-name">RED</div>
+                            </div>
+                            <div class="team-menu-item" onclick="showTeamDetail('green')">
+                                <div class="team-menu-dot green"></div>
+                                <div class="team-menu-name">GREEN</div>
+                            </div>
+                            <div class="team-menu-item" onclick="showTeamDetail('blue')">
+                                <div class="team-menu-dot blue"></div>
+                                <div class="team-menu-name">BLUE</div>
+                            </div>
+                        </div>
+
+                        <div class="team-detail-content">
+                            <!-- Yellow Team Detail -->
+                            <div id="yellow-detail" class="team-detail active">
+                                <div class="team-detail-header">
+                                    <div class="team-detail-title">EQUIPE YELLOW</div>
+                                    <div class="team-detail-subtitle">ASSIST. SUPERVISÃO - NATHÁLIA VASCONCELOS</div>
+                                </div>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Pagamentos</div>
+                                        <div class="stat-value">24</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Valor</div>
+                                        <div class="stat-value">58.964</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Meta</div>
+                                        <div class="stat-value">50.000</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">% Meta</div>
+                                        <div class="stat-value">118%</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Ticket Médio</div>
+                                        <div class="stat-value">2.457</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Posição</div>
+                                        <div class="stat-value">1º</div>
+                                    </div>
+                                </div>
+                                <div class="consultants-detail-grid">
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">1</div>
+                                            <div class="consultant-value">24.491</div>
+                                        </div>
+                                        <div class="consultant-name">PAULO HENRIQUE RODRIGUES MENDES</div>
+                                        <div class="consultant-info">7 pagamentos • Ticket médio: 3.499 • Líder geral</div>
+                                    </div>
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">5</div>
+                                            <div class="consultant-value">9.915</div>
+                                        </div>
+                                        <div class="consultant-name">MONIKE TEIXEIRA CARVALHO</div>
+                                        <div class="consultant-info">4 pagamentos • Ticket médio: 2.479 • Top 5</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pink Team Detail -->
+                            <div id="pink-detail" class="team-detail">
+                                <div class="team-detail-header">
+                                    <div class="team-detail-title">EQUIPE PINK</div>
+                                    <div class="team-detail-subtitle">ASSIST. SUPERVISÃO - ANA LILIAN</div>
+                                </div>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Pagamentos</div>
+                                        <div class="stat-value">17</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Valor</div>
+                                        <div class="stat-value">41.171</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Meta</div>
+                                        <div class="stat-value">50.000</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">% Meta</div>
+                                        <div class="stat-value">82%</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Ticket Médio</div>
+                                        <div class="stat-value">2.422</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Posição</div>
+                                        <div class="stat-value">2º</div>
+                                    </div>
+                                </div>
+                                <div class="consultants-detail-grid">
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">3</div>
+                                            <div class="consultant-value">11.205</div>
+                                        </div>
+                                        <div class="consultant-name">FLÁVIO AUGUSTO DA C. SOUZA</div>
+                                        <div class="consultant-info">5 pagamentos • Ticket médio: 2.241 • Top 3</div>
+                                    </div>
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">4</div>
+                                            <div class="consultant-value">10.998</div>
+                                        </div>
+                                        <div class="consultant-name">LUCAS LOBO SARMANHO</div>
+                                        <div class="consultant-info">4 pagamentos • Ticket médio: 2.750 • Top 4</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Red Team Detail -->
+                            <div id="red-detail" class="team-detail">
+                                <div class="team-detail-header">
+                                    <div class="team-detail-title">EQUIPE RED</div>
+                                    <div class="team-detail-subtitle">ASSIST. SUPERVISÃO - DÉBORA LARISSA</div>
+                                </div>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Pagamentos</div>
+                                        <div class="stat-value">15</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Valor</div>
+                                        <div class="stat-value">36.812</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Meta</div>
+                                        <div class="stat-value">50.000</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">% Meta</div>
+                                        <div class="stat-value">74%</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Ticket Médio</div>
+                                        <div class="stat-value">2.454</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Posição</div>
+                                        <div class="stat-value">3º</div>
+                                    </div>
+                                </div>
+                                <div class="consultants-detail-grid">
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">8</div>
+                                            <div class="consultant-value">5.680</div>
+                                        </div>
+                                        <div class="consultant-name">FABIENNE PRICILA LOPES DOS SANTOS ARAÚJO</div>
+                                        <div class="consultant-info">3 pagamentos • Ticket médio: 1.893 • Em crescimento</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Green Team Detail -->
+                            <div id="green-detail" class="team-detail">
+                                <div class="team-detail-header">
+                                    <div class="team-detail-title">EQUIPE GREEN</div>
+                                    <div class="team-detail-subtitle">ASSIST. SUPERVISÃO - AYRTON MENEZES</div>
+                                </div>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Pagamentos</div>
+                                        <div class="stat-value">5</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Valor</div>
+                                        <div class="stat-value">12.562</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Meta</div>
+                                        <div class="stat-value">25.000</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">% Meta</div>
+                                        <div class="stat-value">50%</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Ticket Médio</div>
+                                        <div class="stat-value">2.512</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Posição</div>
+                                        <div class="stat-value">4º</div>
+                                    </div>
+                                </div>
+                                <div class="consultants-detail-grid">
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">2</div>
+                                            <div class="consultant-value">12.562</div>
+                                        </div>
+                                        <div class="consultant-name">SHERISTON GOMES DE LIMA</div>
+                                        <div class="consultant-info">5 pagamentos • Ticket médio: 2.512 • Vice-líder</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blue Team Detail -->
+                            <div id="blue-detail" class="team-detail">
+                                <div class="team-detail-header">
+                                    <div class="team-detail-title">EQUIPE BLUE</div>
+                                    <div class="team-detail-subtitle">ASSIST. SUPERVISÃO - DEBORA DE PAULA</div>
+                                </div>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Pagamentos</div>
+                                        <div class="stat-value">5</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Valor</div>
+                                        <div class="stat-value">11.764</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Meta</div>
+                                        <div class="stat-value">50.000</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">% Meta</div>
+                                        <div class="stat-value">24%</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Ticket Médio</div>
+                                        <div class="stat-value">2.353</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Posição</div>
+                                        <div class="stat-value">5º</div>
+                                    </div>
+                                </div>
+                                <div class="consultants-detail-grid">
+                                    <div class="consultant-detail-card">
+                                        <div class="consultant-header">
+                                            <div class="consultant-rank">-</div>
+                                            <div class="consultant-value">11.764</div>
+                                        </div>
+                                        <div class="consultant-name">CONSULTORES DA EQUIPE BLUE</div>
+                                        <div class="consultant-info">5 pagamentos • Performance em desenvolvimento • Potencial</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!-- Top Consultores -->
+
+<div id="consultants" class="view">
+    <div class="consultants-table-container">
+        <div class="table-header">
+            <h3>🏆 Ranking Completo dos Consultores</h3>
+            <p>Classificação geral por performance de vendas</p>
+        </div>
+        <table class="consultants-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>CONSULTOR</th>
+                    <th>SUPERVISÃO</th>
+                    <th>EQUIPE</th>
+                    <th>PGTOS</th>
+                    <th>VALOR</th>
+                    <th>META</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="rank-cell"><div class="rank-cell top3">1</div></td>
+                    <td class="consultant-name-cell">PAULO HENRIQUE RODRIGUES MENDES <span class="trophy-icon">🏆</span></td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>7</td>
+                    <td class="value-cell">24.491</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell"><div class="rank-cell top3">2</div></td>
+                    <td class="consultant-name-cell">SHERISTON GOMES DE LIMA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge green">GREEN</span></td>
+                    <td>5</td>
+                    <td class="value-cell">12.562</td>
+                    <td class="meta-cell">25.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell"><div class="rank-cell top3">3</div></td>
+                    <td class="consultant-name-cell">FLÁVIO AUGUSTO DA C. SOUZA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge pink">PINK</span></td>
+                    <td>5</td>
+                    <td class="value-cell">11.205</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell"><div class="rank-cell top5">4</div></td>
+                    <td class="consultant-name-cell">LUCAS LOBO SARMANHO</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge pink">PINK</span></td>
+                    <td>4</td>
+                    <td class="value-cell">10.998</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell"><div class="rank-cell top5">5</div></td>
+                    <td class="consultant-name-cell">MONIKE TEIXEIRA CARVALHO</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>4</td>
+                    <td class="value-cell">9.915</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">6</td>
+                    <td class="consultant-name-cell">JOÃO VICTOR DE SOUZA OLIVEIRA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge pink">PINK</span></td>
+                    <td>4</td>
+                    <td class="value-cell">9.880</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">7</td>
+                    <td class="consultant-name-cell">CARLOS MACIEL RODRIGUES SOARES</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>3</td>
+                    <td class="value-cell">8.801</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">8</td>
+                    <td class="consultant-name-cell">FABIENNE PRICILA LOPES DOS SANTOS ARAÚJO</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>3</td>
+                    <td class="value-cell">5.680</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">9</td>
+                    <td class="consultant-name-cell">LUCIANA APARECIDA DA SILVA SOUZA COSTA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>3</td>
+                    <td class="value-cell">5.475</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">10</td>
+                    <td class="consultant-name-cell">RAQUEL MONTEIRO D'INCA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>2</td>
+                    <td class="value-cell">5.295</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">11</td>
+                    <td class="consultant-name-cell">ANA KAROLINA ALVES DE SOUSA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>2</td>
+                    <td class="value-cell">5.158</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">12</td>
+                    <td class="consultant-name-cell">NATHALIA VASCONCELOS RODRIGUES DE MORAIS LIMA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>3</td>
+                    <td class="value-cell">5.128</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">13</td>
+                    <td class="consultant-name-cell">HELENA DOS SANTOS FROES</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>2</td>
+                    <td class="value-cell">4.967</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">14</td>
+                    <td class="consultant-name-cell">KAUANNE ALVES XAVIER</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>2</td>
+                    <td class="value-cell">4.640</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">15</td>
+                    <td class="consultant-name-cell">NUBIA GRACILIANO DE QUEIROZ</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>2</td>
+                    <td class="value-cell">3.889</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">16</td>
+                    <td class="consultant-name-cell">ANDRÉ LEONARDO CALISTO SILVA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>1</td>
+                    <td class="value-cell">3.300</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">17</td>
+                    <td class="consultant-name-cell">SIDELIA ALMEIDA GONÇALVES</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge yellow">YELLOW</span></td>
+                    <td>2</td>
+                    <td class="value-cell">2.813</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">18</td>
+                    <td class="consultant-name-cell">LUCAS VAZ DE SOUZA LIMA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge pink">PINK</span></td>
+                    <td>1</td>
+                    <td class="value-cell">2.768</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">19</td>
+                    <td class="consultant-name-cell">KARLA LARISSA PINHEIRO VIEIRA (INSTITUCIONAL)</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge red">RED</span></td>
+                    <td>1</td>
+                    <td class="value-cell">2.720</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+                <tr>
+                    <td class="rank-cell">20</td>
+                    <td class="consultant-name-cell">FILIPE DE SOUZA</td>
+                    <td>Geral CIM</td>
+                    <td><span class="team-badge pink">PINK</span></td>
+                    <td>1</td>
+                    <td class="value-cell">2.640</td>
+                    <td class="meta-cell">50.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Analytics -->
+
+<div id="analytics" class="view">
+    <div class="section-card">
+        <div class="section-title">
+            <div class="title-icon"></div>
+            Analytics Avançados
+        </div>
+        <p style="text-align: center; color: #7f8c8d; margin: 40px 0;">
+            📊 Seção de Analytics em desenvolvimento<br>
+            Gráficos e análises detalhadas serão implementados aqui
+        </p>
+    </div>
+</div>
+
+
+
+<!-- Relatórios -->
+
+<div id="reports" class="view">
+    <div class="section-card">
+        <div class="section-title">
+            <div class="title-icon"></div>
+            Relatórios Detalhados
+        </div>
+        <p style="text-align: center; color: #7f8c8d; margin: 40px 0;">
+            📋 Seção de Relatórios em desenvolvimento<br>
+            Relatórios exportáveis e análises históricas serão implementados aqui
+        </p>
+    </div>
+</div>
+
+
+
+
+
+<!-- SEÇÃO DE DIMENSIONAMENTO -->
+
+<div id="dimensioning" class="view">
+    <div class="section-card">
+        <h2 class="section-title"><span class="title-icon"></span>Dimensionamento de Equipes</h2>
+        <p class="section-subtitle">Organize e aloque consultores nas equipes</p>
+        
+        <div class="dimensioning-layout">
+            <!-- Menu lateral esquerdo -->
+            <div class="teams-sidebar">
+                <div class="sidebar-header">
+                    <h3>Equipes</h3>
+                </div>
+                
+                <div class="teams-menu">
+                    <button class="team-menu-btn yellow-btn active" data-team="yellow" onclick="selectTeam('yellow')">
+                        <div class="team-color-dot" style="background-color: #f1c40f;"></div>
+                        <span>YELLOW</span>
+                        <span class="team-count" id="count-yellow">3</span>
+                    </button>
+                    
+                    <button class="team-menu-btn pink-btn" data-team="pink" onclick="selectTeam('pink')">
+                        <div class="team-color-dot" style="background-color: #e91e63;"></div>
+                        <span>PINK</span>
+                        <span class="team-count" id="count-pink">3</span>
+                    </button>
+                    
+                    <button class="team-menu-btn red-btn" data-team="red" onclick="selectTeam('red')">
+                        <div class="team-color-dot" style="background-color: #e74c3c;"></div>
+                        <span>RED</span>
+                        <span class="team-count" id="count-red">2</span>
+                    </button>
+                    
+                    <button class="team-menu-btn green-btn" data-team="green" onclick="selectTeam('green')">
+                        <div class="team-color-dot" style="background-color: #27ae60;"></div>
+                        <span>GREEN</span>
+                        <span class="team-count" id="count-green">1</span>
+                    </button>
+                    
+                    <button class="team-menu-btn blue-btn" data-team="blue" onclick="selectTeam('blue')">
+                        <div class="team-color-dot" style="background-color: #3498db;"></div>
+                        <span>BLUE</span>
+                        <span class="team-count" id="count-blue">2</span>
+                    </button>
+                </div>
+                
+                <!-- Seção de consultores disponíveis -->
+
+                <div class="available-consultants">
+                    <div class="modern-header">
+                        <div class="header-actions">
+                            <button class="modern-add-btn" onclick="toggleModernAddForm()">
+                                <span class="add-plus">+</span>
+                                <span class="add-text">Adicionar Consultor</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="available-list">
+                        <div class="consultant-available-item" draggable="true" data-consultant="NOVO CONSULTOR 1">
+                            <span class="consultant-name">NOVO CONSULTOR 1</span>
+                            <button class="btn-remove-available" onclick="removeAvailableConsultant(this)">×</button>
+                        </div>
+                        <div class="consultant-available-item" draggable="true" data-consultant="NOVO CONSULTOR 2">
+                            <span class="consultant-name">NOVO CONSULTOR 2</span>
+                            <button class="btn-remove-available" onclick="removeAvailableConsultant(this)">×</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+
+
+                    <!-- Formulário de adicionar consultor -->
+                    <div class="floating-form" id="floating-form">
+                        <div class="form-content">
+                            <h4>Novo Consultor</h4>
+                            <input type="text" id="modern-consultant-input" placeholder="Nome completo do consultor" />
+                            <div class="form-buttons">
+                                <button class="btn-add" onclick="addModernConsultant()">Adicionar</button>
+                                <button class="btn-close" onclick="toggleModernAddForm()">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+            <!-- Área principal direita -->
+            <div class="team-content">
+                <!-- Cabeçalho da equipe selecionada -->
+                <div class="team-header" id="team-header">
+                    <div class="team-info">
+                        <div class="team-badge-1">
+                            <div class="team-color-indicator" id="team-color" style="background-color: #f1c40f;"></div>
+                            <h3 id="team-name">EQUIPE YELLOW</h3>
+                        </div>
+                        <p class="team-supervisor" id="team-supervisor">ASSIST. SUPERVISÃO - NATHÁLIA VASCONCELOS</p>
+                    </div>
+                    <div class="team-stats">
+                        <span class="consultant-count" id="consultant-count">3 consultores</span>
+                    </div>
+                </div>
+
+                <!-- Lista de consultores da equipe -->
+                <div class="team-consultants-list drop-zone" id="team-consultants" data-team="yellow">
+                    <div class="consultant-team-item">
+                        <div class="consultant-avatar">PH</div>
+                        <span class="consultant-name">PAULO HENRIQUE RODRIGUES MENDES</span>
+                        <button class="btn-remove-team" onclick="removeFromTeam(this, 'PAULO HENRIQUE RODRIGUES MENDES')">Remover</button>
+                    </div>
+                    
+                    <div class="consultant-team-item">
+                        <div class="consultant-avatar">IT</div>
+                        <span class="consultant-name">IVONILCE TEIXEIRA CARVALHO</span>
+                        <button class="btn-remove-team" onclick="removeFromTeam(this, 'IVONILCE TEIXEIRA CARVALHO')">Remover</button>
+                    </div>
+                    
+                    <div class="consultant-team-item">
+                        <div class="consultant-avatar">LA</div>
+                        <span class="consultant-name">LUCIANA APARECIDA DA SILVA SOUZA COSTA</span>
+                        <button class="btn-remove-team" onclick="removeFromTeam(this, 'LUCIANA APARECIDA DA SILVA SOUZA COSTA')">Remover</button>
+                    </div>
+                </div>
+                
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+</div>
+
+
+
+
+<script src="/frontend/static/js/main.js"></script>
+
+
+
+
+
+</body>
+</html>
+

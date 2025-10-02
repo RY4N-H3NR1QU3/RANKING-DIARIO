@@ -1,0 +1,1082 @@
+<!-- SEÇÃO DE DIMENSIONAMENTO - VERSÃO 6: LAYOUT MODERNO COM CARDS FLUTUANTES -->
+<div id="dimensioning" class="view">
+    <div class="section-card">
+        <div class="modern-header">
+            <div class="header-content">
+                <h2 class="modern-title">Dimensionamento de Equipes</h2>
+                <p class="modern-subtitle">Gestão inteligente de consultores</p>
+            </div>
+            <div class="header-actions">
+                <button class="modern-add-btn" onclick="toggleModernAddForm()">
+                    <span class="add-plus">+</span>
+                    <span class="add-text">Adicionar Consultor</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Formulário flutuante -->
+        <div class="floating-form" id="floating-form">
+            <div class="form-content">
+                <h4>Novo Consultor</h4>
+                <input type="text" id="modern-consultant-input" placeholder="Nome completo do consultor" />
+                <div class="form-buttons">
+                    <button class="btn-add" onclick="addModernConsultant()">Adicionar</button>
+                    <button class="btn-close" onclick="toggleModernAddForm()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modern-layout">
+            <!-- Painel lateral moderno -->
+            <div class="modern-sidebar">
+                <!-- Estatísticas rápidas -->
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="modern-total">13</span>
+                            <span class="stat-desc">Total Consultores</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🆓</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="modern-available">2</span>
+                            <span class="stat-desc">Disponíveis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu de equipes moderno -->
+                <div class="modern-teams-menu">
+                    <h3 class="menu-title">Equipes</h3>
+                    
+                    <div class="teams-grid">
+                        <div class="modern-team-card active" data-team="yellow" onclick="selectModernTeam('yellow')">
+                            <div class="team-card-header">
+                                <div class="team-dot yellow-dot"></div>
+                                <span class="team-card-name">YELLOW</span>
+                                <span class="team-card-badge" id="modern-count-yellow">3</span>
+                            </div>
+                            <div class="team-card-supervisor">Nathália Vasconcelos</div>
+                        </div>
+                        
+                        <div class="modern-team-card" data-team="pink" onclick="selectModernTeam('pink')">
+                            <div class="team-card-header">
+                                <div class="team-dot pink-dot"></div>
+                                <span class="team-card-name">PINK</span>
+                                <span class="team-card-badge" id="modern-count-pink">3</span>
+                            </div>
+                            <div class="team-card-supervisor">Ana Lilian</div>
+                        </div>
+                        
+                        <div class="modern-team-card" data-team="red" onclick="selectModernTeam('red')">
+                            <div class="team-card-header">
+                                <div class="team-dot red-dot"></div>
+                                <span class="team-card-name">RED</span>
+                                <span class="team-card-badge" id="modern-count-red">2</span>
+                            </div>
+                            <div class="team-card-supervisor">Débora Larissa</div>
+                        </div>
+                        
+                        <div class="modern-team-card" data-team="green" onclick="selectModernTeam('green')">
+                            <div class="team-card-header">
+                                <div class="team-dot green-dot"></div>
+                                <span class="team-card-name">GREEN</span>
+                                <span class="team-card-badge" id="modern-count-green">1</span>
+                            </div>
+                            <div class="team-card-supervisor">Ayrton Menezes</div>
+                        </div>
+                        
+                        <div class="modern-team-card" data-team="blue" onclick="selectModernTeam('blue')">
+                            <div class="team-card-header">
+                                <div class="team-dot blue-dot"></div>
+                                <span class="team-card-name">BLUE</span>
+                                <span class="team-card-badge" id="modern-count-blue">2</span>
+                            </div>
+                            <div class="team-card-supervisor">Debora de Paula</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pool de consultores disponíveis -->
+                <div class="consultants-pool">
+                    <h4 class="pool-title">Pool de Consultores</h4>
+                    <div class="pool-container">
+                        <div class="pool-consultant" draggable="true" data-consultant="NOVO CONSULTOR 1">
+                            <div class="pool-avatar">NC</div>
+                            <div class="pool-info">
+                                <span class="pool-name">NOVO CONSULTOR 1</span>
+                                <span class="pool-status">Disponível</span>
+                            </div>
+                            <button class="pool-remove" onclick="removeFromPool(this)">×</button>
+                        </div>
+                        
+                        <div class="pool-consultant" draggable="true" data-consultant="NOVO CONSULTOR 2">
+                            <div class="pool-avatar">NC</div>
+                            <div class="pool-info">
+                                <span class="pool-name">NOVO CONSULTOR 2</span>
+                                <span class="pool-status">Disponível</span>
+                            </div>
+                            <button class="pool-remove" onclick="removeFromPool(this)">×</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Área principal moderna -->
+            <div class="modern-main">
+                <div class="main-header">
+                    <div class="current-team-display">
+                        <div class="team-display-icon">
+                            <div class="display-dot yellow-dot" id="modern-team-dot"></div>
+                        </div>
+                        <div class="team-display-info">
+                            <h3 class="display-team-name" id="modern-team-name">EQUIPE YELLOW</h3>
+                            <p class="display-supervisor" id="modern-team-supervisor">Supervisão: Nathália Vasconcelos</p>
+                        </div>
+                    </div>
+                    <div class="team-metrics">
+                        <div class="metric-item">
+                            <span class="metric-number" id="modern-team-count">3</span>
+                            <span class="metric-label">Consultores</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="consultants-grid drop-zone" id="modern-consultants-grid" data-team="yellow">
+                    <div class="modern-consultant-card">
+                        <div class="consultant-card-avatar">
+                            <span class="avatar-text">PH</span>
+                        </div>
+                        <div class="consultant-card-content">
+                            <h5 class="consultant-card-name">PAULO HENRIQUE RODRIGUES MENDES</h5>
+                            <div class="consultant-card-actions">
+                                <button class="action-remove" onclick="removeFromModernTeam(this, 'PAULO HENRIQUE RODRIGUES MENDES')">
+                                    <span class="action-icon">🗑️</span>
+                                    <span class="action-text">Remover</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modern-consultant-card">
+                        <div class="consultant-card-avatar">
+                            <span class="avatar-text">IT</span>
+                        </div>
+                        <div class="consultant-card-content">
+                            <h5 class="consultant-card-name">IVONILCE TEIXEIRA CARVALHO</h5>
+                            <div class="consultant-card-actions">
+                                <button class="action-remove" onclick="removeFromModernTeam(this, 'IVONILCE TEIXEIRA CARVALHO')">
+                                    <span class="action-icon">🗑️</span>
+                                    <span class="action-text">Remover</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modern-consultant-card">
+                        <div class="consultant-card-avatar">
+                            <span class="avatar-text">LA</span>
+                        </div>
+                        <div class="consultant-card-content">
+                            <h5 class="consultant-card-name">LUCIANA APARECIDA DA SILVA SOUZA COSTA</h5>
+                            <div class="consultant-card-actions">
+                                <button class="action-remove" onclick="removeFromModernTeam(this, 'LUCIANA APARECIDA DA SILVA SOUZA COSTA')">
+                                    <span class="action-icon">🗑️</span>
+                                    <span class="action-text">Remover</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modern-drop-zone" id="modern-drop-zone">
+                    <div class="drop-zone-content">
+                        <div class="drop-zone-icon">⬇️</div>
+                        <h4 class="drop-zone-title">Área de Alocação</h4>
+                        <p class="drop-zone-description">Arraste consultores do pool para alocar na equipe selecionada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ESTILOS PARA DIMENSIONAMENTO - VERSÃO 6: LAYOUT MODERNO */
+
+.modern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px 30px;
+    border-radius: 15px 15px 0 0;
+    margin: -25px -25px 30px -25px;
+}
+
+.header-content h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.modern-subtitle {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.modern-add-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modern-add-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.add-plus {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Formulário flutuante */
+
+
+
+.floating-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.floating-form.active {
+    display: flex;
+    animation: fadeInModal 0.3s ease;
+}
+
+.form-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    min-width: 400px;
+    text-align: center;
+}
+
+.form-content h4 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.form-content input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.form-content input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-add, .btn-close {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-add {
+    background: #667eea;
+    color: white;
+}
+
+.btn-add:hover {
+    background: #5a6fd8;
+    transform: translateY(-1px);
+}
+
+.btn-close {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-close:hover {
+    background: #7f8c8d;
+}
+
+
+
+
+
+
+/* Layout moderno */
+.modern-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    min-height: 600px;
+}
+
+/* Sidebar moderna */
+.modern-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Estatísticas rápidas */
+.quick-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+}
+
+.stat-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-top: 2px;
+}
+
+/* Menu de equipes moderno */
+.modern-teams-menu {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menu-title {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.teams-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modern-team-card {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.modern-team-card:hover {
+    background: #f8f9fa;
+}
+
+.modern-team-card.active {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+}
+
+.team-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.team-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.yellow-dot { background: #f1c40f; }
+.pink-dot { background: #e91e63; }
+.red-dot { background: #e74c3c; }
+.green-dot { background: #27ae60; }
+.blue-dot { background: #3498db; }
+
+.team-card-name {
+    flex-grow: 1;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.85rem;
+}
+
+.team-card-badge {
+    background: #667eea;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.team-card-supervisor {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    margin-left: 20px;
+}
+
+/* Pool de consultores */
+.consultants-pool {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pool-title {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.pool-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.pool-consultant {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.pool-consultant:hover {
+    background: #e9ecef;
+    transform: translateX(3px);
+}
+
+.pool-consultant.dragging {
+    opacity: 0.5;
+    transform: rotate(3deg);
+}
+
+.pool-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #95a5a6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.pool-info {
+    flex-grow: 1;
+}
+
+.pool-name {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #2c3e50;
+    line-height: 1.2;
+}
+
+.pool-status {
+    display: block;
+    font-size: 0.7rem;
+    color: #27ae60;
+    margin-top: 2px;
+}
+
+.pool-remove {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.pool-remove:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+/* Área principal moderna */
+.modern-main {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 25px;
+}
+
+.current-team-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.team-display-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.display-team-name {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.display-supervisor {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.team-metrics {
+    text-align: center;
+}
+
+.metric-number {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Grid de consultores */
+.consultants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    min-height: 200px;
+    transition: all 0.3s ease;
+}
+
+.consultants-grid.drag-over {
+    background: rgba(102, 126, 234, 0.05);
+    border: 2px dashed #667eea;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.modern-consultant-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modern-consultant-card:hover {
+    background: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.consultant-card-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.consultant-card-content {
+    flex-grow: 1;
+}
+
+.consultant-card-name {
+    color: #2c3e50;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.consultant-card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-remove {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.action-remove:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+.action-icon {
+    font-size: 0.8rem;
+}
+
+/* Zona de drop moderna */
+.modern-drop-zone {
+    border: 2px dashed #bdc3c7;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.modern-drop-zone.drag-over {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.drop-zone-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.drop-zone-title {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.drop-zone-description {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modern-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .modern-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .consultants-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<script>
+// JAVASCRIPT PARA DIMENSIONAMENTO - VERSÃO 6: LAYOUT MODERNO
+
+// Dados das equipes
+const teamsData = {
+    yellow: {
+        name: 'EQUIPE YELLOW',
+        supervisor: 'Nathália Vasconcelos',
+        color: 'yellow-dot',
+        consultants: [
+            'PAULO HENRIQUE RODRIGUES MENDES',
+            'IVONILCE TEIXEIRA CARVALHO',
+            'LUCIANA APARECIDA DA SILVA SOUZA COSTA'
+        ]
+    },
+    pink: {
+        name: 'EQUIPE PINK',
+        supervisor: 'Ana Lilian',
+        color: 'pink-dot',
+        consultants: [
+            'FLÁVIO AUGUSTO DA C. SOUZA',
+            'LUCAS LOBO SARMANHO',
+            'JOÃO VICTOR DE SOUZA OLIVEIRA'
+        ]
+    },
+    red: {
+        name: 'EQUIPE RED',
+        supervisor: 'Débora Larissa',
+        color: 'red-dot',
+        consultants: [
+            'CARLOS MACIEL RODRIGUES SOARES',
+            'FABIENNE PRICILA LOPES DOS SANTOS ARAUJO'
+        ]
+    },
+    green: {
+        name: 'EQUIPE GREEN',
+        supervisor: 'Ayrton Menezes',
+        color: 'green-dot',
+        consultants: [
+            'SHERISTON GOMES DE LIMA'
+        ]
+    },
+    blue: {
+        name: 'EQUIPE BLUE',
+        supervisor: 'Debora de Paula',
+        color: 'blue-dot',
+        consultants: [
+            'RAYANE GARCIA VALENTIM',
+            'DANIELLE DE QUEIROZ FONSECA'
+        ]
+    }
+};
+
+let currentTeam = 'yellow';
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupModernDragAndDrop();
+    selectModernTeam('yellow');
+    updateModernStats();
+});
+
+function selectModernTeam(teamId) {
+    currentTeam = teamId;
+    
+    // Atualizar cards de equipe
+    document.querySelectorAll('.modern-team-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.querySelector(`[data-team="${teamId}"]`).classList.add('active');
+    
+    // Atualizar cabeçalho
+    const team = teamsData[teamId];
+    document.getElementById('modern-team-name').textContent = team.name;
+    document.getElementById('modern-team-supervisor').textContent = `Supervisão: ${team.supervisor}`;
+    document.getElementById('modern-team-dot').className = `display-dot ${team.color}`;
+    document.getElementById('modern-team-count').textContent = team.consultants.length;
+    
+    // Atualizar grid
+    updateModernConsultantsGrid(teamId);
+    
+    // Atualizar data-team
+    document.getElementById('modern-consultants-grid').dataset.team = teamId;
+}
+
+function updateModernConsultantsGrid(teamId) {
+    const team = teamsData[teamId];
+    const container = document.getElementById('modern-consultants-grid');
+    
+    container.innerHTML = '';
+    
+    team.consultants.forEach(consultant => {
+        const card = document.createElement('div');
+        card.className = 'modern-consultant-card';
+        
+        const initials = consultant.split(' ').map(word => word.charAt(0)).join('').substring(0, 2);
+        
+        card.innerHTML = `
+            <div class="consultant-card-avatar">
+                <span class="avatar-text">${initials}</span>
+            </div>
+            <div class="consultant-card-content">
+                <h5 class="consultant-card-name">${consultant}</h5>
+                <div class="consultant-card-actions">
+                    <button class="action-remove" onclick="removeFromModernTeam(this, '${consultant}')">
+                        <span class="action-icon">🗑️</span>
+                        <span class="action-text">Remover</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(card);
+    });
+}
+
+function toggleModernAddForm() {
+    const form = document.getElementById('floating-form');
+    const input = document.getElementById('modern-consultant-input');
+    
+    form.classList.toggle('active');
+    
+    if (form.classList.contains('active')) {
+        input.focus();
+    } else {
+        input.value = '';
+    }
+}
+
+function addModernConsultant() {
+    const input = document.getElementById('modern-consultant-input');
+    const name = input.value.trim();
+    
+    if (name) {
+        addToModernPool(name);
+        input.value = '';
+        toggleModernAddForm();
+        updateModernStats();
+    }
+}
+
+function addToModernPool(name) {
+    const container = document.querySelector('.pool-container');
+    const item = document.createElement('div');
+    item.className = 'pool-consultant';
+    item.draggable = true;
+    item.dataset.consultant = name;
+    
+    const initials = name.split(' ').map(word => word.charAt(0)).join('').substring(0, 2);
+    
+    item.innerHTML = `
+        <div class="pool-avatar">${initials}</div>
+        <div class="pool-info">
+            <span class="pool-name">${name}</span>
+            <span class="pool-status">Disponível</span>
+        </div>
+        <button class="pool-remove" onclick="removeFromPool(this)">×</button>
+    `;
+    
+    container.appendChild(item);
+    setupModernDragForElement(item);
+}
+
+function removeFromPool(button) {
+    button.closest('.pool-consultant').remove();
+    updateModernStats();
+}
+
+function removeFromModernTeam(button, consultantName) {
+    // Remover da equipe
+    const teamConsultants = teamsData[currentTeam].consultants;
+    const index = teamConsultants.indexOf(consultantName);
+    if (index > -1) {
+        teamConsultants.splice(index, 1);
+    }
+    
+    // Atualizar interface
+    updateModernConsultantsGrid(currentTeam);
+    updateModernTeamCount(currentTeam);
+    updateModernStats();
+    
+    // Adicionar de volta ao pool
+    addToModernPool(consultantName);
+}
+
+function updateModernTeamCount(teamId) {
+    const count = teamsData[teamId].consultants.length;
+    document.getElementById(`modern-count-${teamId}`).textContent = count;
+    
+    if (teamId === currentTeam) {
+        document.getElementById('modern-team-count').textContent = count;
+    }
+}
+
+function updateModernStats() {
+    const totalConsultants = Object.values(teamsData).reduce((total, team) => total + team.consultants.length, 0) + 
+                           document.querySelectorAll('.pool-consultant').length;
+    const availableCount = document.querySelectorAll('.pool-consultant').length;
+    
+    document.getElementById('modern-total').textContent = totalConsultants;
+    document.getElementById('modern-available').textContent = availableCount;
+}
+
+// Drag and Drop moderno
+function setupModernDragAndDrop() {
+    document.querySelectorAll('.pool-consultant').forEach(setupModernDragForElement);
+    
+    const consultantsGrid = document.getElementById('modern-consultants-grid');
+    const dropZone = document.getElementById('modern-drop-zone');
+    
+    [consultantsGrid, dropZone].forEach(zone => {
+        zone.addEventListener('dragover', handleModernDragOver);
+        zone.addEventListener('drop', handleModernDrop);
+        zone.addEventListener('dragenter', handleModernDragEnter);
+        zone.addEventListener('dragleave', handleModernDragLeave);
+    });
+}
+
+function setupModernDragForElement(element) {
+    element.addEventListener('dragstart', handleModernDragStart);
+    element.addEventListener('dragend', handleModernDragEnd);
+}
+
+function handleModernDragStart(e) {
+    e.dataTransfer.setData('text/plain', e.target.dataset.consultant);
+    e.target.classList.add('dragging');
+}
+
+function handleModernDragEnd(e) {
+    e.target.classList.remove('dragging');
+}
+
+function handleModernDragOver(e) {
+    e.preventDefault();
+}
+
+function handleModernDragEnter(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add('drag-over');
+}
+
+function handleModernDragLeave(e) {
+    e.currentTarget.classList.remove('drag-over');
+}
+
+function handleModernDrop(e) {
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over');
+    
+    const consultantName = e.dataTransfer.getData('text/plain');
+    const draggedElement = document.querySelector(`[data-consultant="${consultantName}"]`);
+    
+    if (draggedElement && currentTeam) {
+        // Adicionar à equipe atual
+        teamsData[currentTeam].consultants.push(consultantName);
+        
+        // Remover do pool
+        draggedElement.remove();
+        
+        // Atualizar interface
+        updateModernConsultantsGrid(currentTeam);
+        updateModernTeamCount(currentTeam);
+        updateModernStats();
+    }
+}
+</script>
+
